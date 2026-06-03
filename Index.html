@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confirmar Presença — Ravi 1 Aninho 🤠</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--blue:#7ab8d9;--text:#4a3728;--green:#5a9e6f}
+html,body{
+  width:100%;min-height:100vh;font-family:'Quicksand',sans-serif;
+  background:linear-gradient(160deg,#c5e3f5 0%,#daeeff 40%,#b8d9f0 70%,#c5e3f5 100%);
+}
+
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.star{position:absolute;border-radius:50%;background:rgba(255,255,255,0.6);animation:twinkle var(--d) ease-in-out infinite alternate}
+@keyframes twinkle{from{opacity:0.2;transform:scale(0.8)}to{opacity:1;transform:scale(1.2)}}
+
+.wrap{position:relative;z-index:1;max-width:480px;margin:0 auto;padding:20px 16px 40px}
+
+.party-header{text-align:center;padding:30px 20px 10px;animation:fadeDown 0.6s ease both}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+.party-header .emoji-row{font-size:40px;margin-bottom:10px;display:flex;justify-content:center;gap:8px;animation:bounce 2s ease infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.party-header h1{font-family:'Pacifico',cursive;font-size:28px;color:#4a3728;text-shadow:0 2px 10px rgba(122,184,217,0.4);margin-bottom:6px}
+.party-header .sub{font-size:13px;color:#7a9cb0;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+
+.card{background:rgba(255,255,255,0.88);backdrop-filter:blur(20px);border-radius:28px;box-shadow:0 16px 50px rgba(74,55,40,0.12),0 2px 0 rgba(255,255,255,0.9) inset;overflow:hidden;animation:slideUp 0.7s cubic-bezier(0.34,1.4,0.64,1) 0.2s both}
+@keyframes slideUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+
+.card-band{background:linear-gradient(135deg,#7ab8d9 0%,#5a9ec9 50%,#7ab8d9 100%);background-size:200% 200%;animation:gradFlow 4s ease infinite;padding:22px 24px 18px;text-align:center;position:relative;overflow:hidden}
+@keyframes gradFlow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.card-band::before{content:'🤠';position:absolute;font-size:80px;opacity:0.12;bottom:-15px;right:-10px}
+.card-band h2{font-family:'Pacifico',cursive;font-size:22px;color:white;text-shadow:0 2px 6px rgba(0,0,0,0.15);margin-bottom:2px}
+.card-band p{font-size:12px;color:rgba(255,255,255,0.85);font-weight:600}
+
+.card-body{padding:26px 22px 24px}
+
+.sec-title{font-family:'Dancing Script',cursive;font-size:20px;color:var(--blue);margin-bottom:14px}
+
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--blue);margin-bottom:6px}
+.fg input{width:100%;padding:13px 16px;border:2px solid rgba(122,184,217,0.25);border-radius:14px;font-family:'Quicksand',sans-serif;font-size:14px;font-weight:600;color:var(--text);background:rgba(184,217,240,0.06);outline:none;transition:all 0.25s;-webkit-appearance:none}
+.fg input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(122,184,217,0.15);background:rgba(122,184,217,0.05)}
+
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(122,184,217,0.35),transparent);margin:20px 0}
+
+.you-row{display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(122,184,217,0.1);border:1.5px solid rgba(122,184,217,0.3);border-radius:14px;margin-bottom:16px;transition:all 0.3s}
+.you-badge{background:linear-gradient(135deg,#7ab8d9,#5a9ec9);color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.you-text{font-size:13px;font-weight:600;color:var(--text)}
+.you-text span{font-size:11px;color:#aaa;display:block;font-weight:400}
+
+.hint{font-size:13px;color:#999;margin-bottom:16px;line-height:1.6}
+
+.guest-cat{margin-bottom:16px}
+.cat-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.cat-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue)}
+.cat-sub{font-size:10px;color:#aaa;font-weight:500;margin-left:4px;text-transform:none;letter-spacing:0}
+.cat-ctrls{display:flex;align-items:center;gap:10px}
+.cnt-btn{width:32px;height:32px;border-radius:50%;border:none;background:linear-gradient(135deg,#7ab8d9,#5a9ec9);color:white;font-size:20px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;box-shadow:0 3px 10px rgba(122,184,217,0.4);line-height:1;padding-bottom:2px}
+.cnt-btn:hover{transform:scale(1.12);box-shadow:0 5px 15px rgba(122,184,217,0.5)}
+.cnt-btn:active{transform:scale(0.92)}
+.cnt-num{font-size:18px;font-weight:700;color:var(--text);min-width:24px;text-align:center}
+
+.guest-names{display:flex;flex-direction:column;gap:8px}
+.gnr{display:flex;align-items:center;gap:8px;animation:fadeIn 0.3s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}
+.gn-num{width:26px;height:26px;border-radius:50%;background:rgba(122,184,217,0.18);color:var(--blue);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.gnr input{flex:1;padding:10px 14px;border:2px solid rgba(122,184,217,0.22);border-radius:12px;font-family:'Quicksand',sans-serif;font-size:13px;font-weight:600;color:var(--text);background:rgba(184,217,240,0.06);outline:none;transition:all 0.25s}
+.gnr input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(122,184,217,0.12)}
+
+.total-box{background:rgba(122,184,217,0.1);border:1.5px solid rgba(122,184,217,0.28);border-radius:16px;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;margin:20px 0}
+.tl{font-size:13px;color:#888;font-weight:600}
+.tn{font-family:'Pacifico',cursive;font-size:26px;color:var(--blue)}
+
+.btn-submit{width:100%;padding:16px;background:linear-gradient(135deg,#7ab8d9,#5a9ec9);color:white;border:none;border-radius:50px;font-family:'Quicksand',sans-serif;font-size:16px;font-weight:700;cursor:pointer;transition:all 0.3s;box-shadow:0 8px 25px rgba(122,184,217,0.45);display:flex;align-items:center;justify-content:center;gap:10px;letter-spacing:0.5px}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(122,184,217,0.55)}
+.btn-submit:active{transform:translateY(0);box-shadow:0 4px 15px rgba(122,184,217,0.35)}
+.btn-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+
+.err{background:rgba(231,76,60,0.08);border:1.5px solid rgba(231,76,60,0.25);border-radius:12px;padding:12px 16px;color:#c0392b;font-size:13px;font-weight:600;margin-top:12px;display:none;text-align:center;animation:shake 0.4s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+.spinner{width:18px;height:18px;border:3px solid rgba(255,255,255,0.35);border-top-color:white;border-radius:50%;animation:spin 0.7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.success{display:none;text-align:center;padding:24px 0}
+.success .check{font-size:72px;display:block;margin-bottom:14px;animation:popIn 0.6s cubic-bezier(0.34,1.8,0.64,1)}
+@keyframes popIn{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.success h2{font-family:'Pacifico',cursive;font-size:26px;color:var(--green);margin-bottom:8px}
+.success p{color:var(--text);font-size:14px;line-height:1.7;margin-bottom:20px}
+.sdet{background:rgba(90,158,111,0.08);border:1.5px solid rgba(90,158,111,0.18);border-radius:16px;padding:16px;text-align:left;margin-bottom:20px}
+.sdr{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(90,158,111,0.1);font-size:13px}
+.sdr:last-child{border:none}
+.sdl{color:#888;font-weight:500}.sdv{font-weight:700;color:var(--text);text-align:right;max-width:60%}
+.wa-btn{display:block;padding:15px 24px;background:#25D366;color:white;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;margin-bottom:12px;text-align:center;transition:all 0.25s;box-shadow:0 6px 20px rgba(37,211,102,0.35)}
+.wa-btn:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(37,211,102,0.45)}
+.reset-btn{display:block;padding:13px 24px;background:rgba(122,184,217,0.15);color:var(--blue);border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;text-align:center;cursor:pointer;border:1.5px solid rgba(122,184,217,0.3);transition:all 0.25s;font-family:'Quicksand',sans-serif}
+.reset-btn:hover{background:rgba(122,184,217,0.25)}
+
+.cp{position:fixed;width:9px;height:9px;top:-20px;border-radius:2px;pointer-events:none;z-index:900;animation:fall 3.5s ease-in forwards}
+@keyframes fall{0%{transform:translateY(0) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
+
+@media(min-width:520px){.wrap{max-width:500px}.card-body{padding:30px 28px 26px}}
+</style>
+</head>
+<body>
+
+<div class="stars" id="starsContainer"></div>
+
+<div class="wrap">
+  <div class="party-header">
+    <div class="emoji-row">🎉 🤠 🎂</div>
+    <h1>Festa do Ravi</h1>
+    <p class="sub">1° Aninho • 11 de Julho • 18h</p>
+  </div>
+
+  <div class="card">
+    <div class="card-band">
+      <h2>Confirmar Presença</h2>
+      <p>📍 Espaço Ultra Buffet — Joaquim Marra</p>
+    </div>
+
+    <div class="card-body">
+      <div id="formState">
+        <div class="sec-title">✨ Seus dados</div>
+
+        <div class="fg">
+          <label>Seu nome completo</label>
+          <input type="text" id="nomeConvidado" placeholder="Nome e sobrenome" autocomplete="name">
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="sec-title">👨‍👩‍👧‍👦 Quem mais vem com você?</div>
+
+        <div class="you-row" id="youRow" style="display:none">
+          <div class="you-badge">✓</div>
+          <div class="you-text">
+            <span id="youName">Você</span>
+            <span>confirmado(a) automaticamente</span>
+          </div>
+        </div>
+
+        <p class="hint">Adicione as pessoas que virão <strong>além de você</strong> e coloque o nome de cada uma.</p>
+
+        <div class="guest-cat">
+          <div class="cat-hdr">
+            <span class="cat-lbl">👨 Adultos <span class="cat-sub">(18+ anos)</span></span>
+            <div class="cat-ctrls">
+              <button class="cnt-btn" onclick="change('adultos',-1)">−</button>
+              <span class="cnt-num" id="cnt-adultos">0</span>
+              <button class="cnt-btn" onclick="change('adultos',1)">+</button>
+            </div>
+          </div>
+          <div class="guest-names" id="names-adultos"></div>
+        </div>
+
+        <div class="guest-cat">
+          <div class="cat-hdr">
+            <span class="cat-lbl">🧒 Adolescentes <span class="cat-sub">(12–17 anos)</span></span>
+            <div class="cat-ctrls">
+              <button class="cnt-btn" onclick="change('adolescentes',-1)">−</button>
+              <span class="cnt-num" id="cnt-adolescentes">0</span>
+              <button class="cnt-btn" onclick="change('adolescentes',1)">+</button>
+            </div>
+          </div>
+          <div class="guest-names" id="names-adolescentes"></div>
+        </div>
+
+        <div class="guest-cat">
+          <div class="cat-hdr">
+            <span class="cat-lbl">👶 Crianças <span class="cat-sub">(até 11 anos)</span></span>
+            <div class="cat-ctrls">
+              <button class="cnt-btn" onclick="change('criancas',-1)">−</button>
+              <span class="cnt-num" id="cnt-criancas">0</span>
+              <button class="cnt-btn" onclick="change('criancas',1)">+</button>
+            </div>
+          </div>
+          <div class="guest-names" id="names-criancas"></div>
+        </div>
+
+        <div class="total-box">
+          <span class="tl">Total de pessoas confirmadas</span>
+          <span class="tn" id="totalNum">1</span>
+        </div>
+
+        <button class="btn-submit" id="submitBtn" onclick="confirmar()">
+          <span id="submitContent">🎊 Confirmar Presença</span>
+        </button>
+        <div class="err" id="errMsg"></div>
+      </div>
+
+      <div class="success" id="successState"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Firebase -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCdA4RedzUXTbQSDe_E59M5OkoJWqUvnRQ",
+    authDomain: "festa-ravi.firebaseapp.com",
+    projectId: "festa-ravi",
+    storageBucket: "festa-ravi.firebasestorage.app",
+    messagingSenderId: "560466000970",
+    appId: "1:560466000970:web:85ba3265dc3428ac7cbab3"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  window._db = db;
+  window._col = collection;
+  window._addDoc = addDoc;
+</script>
+
+<script>
+// Estrelinhas decorativas
+(function(){
+  const c = document.getElementById('starsContainer');
+  for(let i=0;i<30;i++){
+    const s = document.createElement('div');
+    s.className = 'star';
+    const sz = Math.random()*5+3;
+    s.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${(Math.random()*3+2).toFixed(1)}s;animation-delay:${(Math.random()*3).toFixed(1)}s`;
+    c.appendChild(s);
+  }
+})();
+
+const counts = {adultos:0, adolescentes:0, criancas:0};
+const labels = {adultos:'Adulto', adolescentes:'Adolescente', criancas:'Criança'};
+
+document.getElementById('nomeConvidado').addEventListener('input', function(){
+  const yr = document.getElementById('youRow');
+  const yn = document.getElementById('youName');
+  if(this.value.trim()){ yn.textContent = this.value.trim(); yr.style.display = 'flex'; }
+  else { yr.style.display = 'none'; }
+});
+
+function updateTotal(){
+  document.getElementById('totalNum').textContent = 1 + counts.adultos + counts.adolescentes + counts.criancas;
+}
+
+window.change = function(cat, delta){
+  counts[cat] = Math.max(0, counts[cat] + delta);
+  document.getElementById('cnt-' + cat).textContent = counts[cat];
+  updateNames(cat);
+  updateTotal();
+};
+
+function updateNames(cat){
+  const container = document.getElementById('names-' + cat);
+  const current = container.querySelectorAll('.gnr').length;
+  const needed = counts[cat];
+  if(needed > current){
+    for(let i = current; i < needed; i++){
+      const row = document.createElement('div');
+      row.className = 'gnr';
+      row.innerHTML = `<div class="gn-num">${i+1}</div><input type="text" placeholder="Nome do ${labels[cat].toLowerCase()} ${i+1}" autocomplete="off">`;
+      container.appendChild(row);
+    }
+  } else {
+    const rows = container.querySelectorAll('.gnr');
+    for(let i = needed; i < rows.length; i++) rows[i].remove();
+  }
+}
+
+function getNames(cat){
+  return Array.from(document.getElementById('names-' + cat).querySelectorAll('input'))
+    .map(r => r.value.trim() || '(não informado)');
+}
+
+function launchConfetti(){
+  const cols = ['#7ab8d9','#f0c040','#a8d5a2','#f5a8c0','#b8d9f0','#ffc0cb','#98e0c0'];
+  for(let i = 0; i < 80; i++){
+    const el = document.createElement('div');
+    el.className = 'cp';
+    el.style.cssText = `left:${Math.random()*100}vw;background:${cols[Math.floor(Math.random()*cols.length)]};animation-delay:${Math.random()*2}s;transform:rotate(${Math.random()*360}deg);width:${Math.random()*8+5}px;height:${Math.random()*8+5}px`;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 5000);
+  }
+}
+
+window.confirmar = async function(){
+  const nome = document.getElementById('nomeConvidado').value.trim();
+  const err = document.getElementById('errMsg');
+  err.style.display = 'none';
+
+  if(!nome){
+    err.textContent = '⚠️ Por favor, informe seu nome completo.';
+    err.style.display = 'block';
+    document.getElementById('nomeConvidado').focus();
+    return;
+  }
+
+  const extras = counts.adultos + counts.adolescentes + counts.criancas;
+  const total = 1 + extras;
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  document.getElementById('submitContent').innerHTML = '<span class="spinner"></span> Confirmando...';
+
+  const namesAdultos = getNames('adultos');
+  const namesAdolescentes = getNames('adolescentes');
+  const namesCriancas = getNames('criancas');
+  const ts = new Date().toLocaleString('pt-BR');
+
+  const data = {
+    nome, total,
+    adultos: counts.adultos, namesAdultos,
+    adolescentes: counts.adolescentes, namesAdolescentes,
+    criancas: counts.criancas, namesCriancas,
+    timestamp: ts,
+    _ts: Date.now()
+  };
+
+  // Firebase
+  try {
+    if(window._db && window._col && window._addDoc){
+      await window._addDoc(window._col(window._db, "confirmacoes"), data);
+    }
+  } catch(e){ console.log('Firebase:', e); }
+
+  // WhatsApp
+  let msg = `🎉 *Nova confirmação de presença!*\n\n`;
+  msg += `👤 *Confirmado por:* ${nome}\n\n`;
+  msg += `✅ *${nome}* (confirmante)\n`;
+  if(counts.adultos > 0) msg += `👨 *Adultos (${counts.adultos}):* ${namesAdultos.join(', ')}\n`;
+  if(counts.adolescentes > 0) msg += `🧒 *Adolescentes (${counts.adolescentes}):* ${namesAdolescentes.join(', ')}\n`;
+  if(counts.criancas > 0) msg += `👶 *Crianças (${counts.criancas}):* ${namesCriancas.join(', ')}\n`;
+  msg += `\n📊 *Total: ${total} pessoa${total > 1 ? 's' : ''}*\n\n`;
+  msg += `🎂 Festa do Ravi • 11/07 às 18h\n📍 Espaço Ultra Buffet — Joaquim Marra`;
+
+  const waUrl = `https://wa.me/5511918271038?text=${encodeURIComponent(msg)}`;
+
+  await new Promise(r => setTimeout(r, 1200));
+
+  document.getElementById('formState').style.display = 'none';
+  const ss = document.getElementById('successState');
+  ss.style.display = 'block';
+
+  let det = `<div class="sdr"><span class="sdl">Confirmado por</span><span class="sdv">${nome}</span></div>`;
+  if(counts.adultos > 0) det += `<div class="sdr"><span class="sdl">👨 Adultos</span><span class="sdv">${namesAdultos.join(', ')}</span></div>`;
+  if(counts.adolescentes > 0) det += `<div class="sdr"><span class="sdl">🧒 Adolescentes</span><span class="sdv">${namesAdolescentes.join(', ')}</span></div>`;
+  if(counts.criancas > 0) det += `<div class="sdr"><span class="sdl">👶 Crianças</span><span class="sdv">${namesCriancas.join(', ')}</span></div>`;
+  det += `<div class="sdr"><span class="sdl">Total</span><span class="sdv" style="color:var(--green)">${total} pessoa${total>1?'s':''} 🎉</span></div>`;
+
+  ss.innerHTML = `
+    <span class="check">🥳</span>
+    <h2>Presença confirmada!</h2>
+    <p>Que alegria! Mal podemos esperar para celebrar com você o 1º aninho do Ravi! 🤠</p>
+    <div class="sdet">${det}</div>
+    <a href="${waUrl}" target="_blank" class="wa-btn">📲 Enviar confirmação no WhatsApp</a>
+    <button class="reset-btn" onclick="resetForm()">↩ Confirmar outra pessoa</button>
+  `;
+  launchConfetti();
+};
+
+window.resetForm = function(){
+  document.getElementById('nomeConvidado').value = '';
+  document.getElementById('youRow').style.display = 'none';
+  ['adultos','adolescentes','criancas'].forEach(cat => {
+    counts[cat] = 0;
+    document.getElementById('cnt-' + cat).textContent = 0;
+    document.getElementById('names-' + cat).innerHTML = '';
+  });
+  updateTotal();
+  document.getElementById('submitBtn').disabled = false;
+  document.getElementById('submitContent').innerHTML = '🎊 Confirmar Presença';
+  document.getElementById('errMsg').style.display = 'none';
+  document.getElementById('successState').style.display = 'none';
+  document.getElementById('formState').style.display = 'block';
+  window.scrollTo({top: 0, behavior: 'smooth'});
+};
+</script>
+</body>
+</html>
